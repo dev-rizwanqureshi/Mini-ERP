@@ -62,11 +62,28 @@ defineOptions({
       </div>
 
       <div class="grid gap-2">
+        <Label for="gender">Gender</Label>
+        <select
+          id="gender"
+          name="gender"
+          :tabindex="3"
+          class="flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30"
+        >
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+          <option value="prefer_not_to_say">Prefer not to say</option>
+        </select>
+        <InputError :message="errors.gender" />
+      </div>
+
+      <div class="grid gap-2">
         <Label for="password">Password</Label>
         <PasswordInput
           id="password"
           required
-          :tabindex="3"
+          :tabindex="4"
           autocomplete="new-password"
           name="password"
           placeholder="Password"
@@ -80,7 +97,7 @@ defineOptions({
         <PasswordInput
           id="password_confirmation"
           required
-          :tabindex="4"
+          :tabindex="5"
           autocomplete="new-password"
           name="password_confirmation"
           placeholder="Confirm password"
@@ -92,7 +109,7 @@ defineOptions({
       <Button
         type="submit"
         class="mt-2 w-full"
-        tabindex="5"
+        tabindex="6"
         :disabled="processing"
         data-test="register-user-button"
       >
@@ -106,7 +123,7 @@ defineOptions({
       <TextLink
         :href="login()"
         class="underline underline-offset-4"
-        :tabindex="6"
+        :tabindex="7"
         >Log in</TextLink
       >
     </div>

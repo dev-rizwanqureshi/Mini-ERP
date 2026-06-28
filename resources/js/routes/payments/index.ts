@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PaymentController::index
-* @see app/Http/Controllers/PaymentController.php:18
+* @see app/Http/Controllers/PaymentController.php:20
 * @route '/payments'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\PaymentController::store
-* @see app/Http/Controllers/PaymentController.php:34
+* @see app/Http/Controllers/PaymentController.php:55
 * @route '/payments'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +97,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\PaymentController::store
-* @see app/Http/Controllers/PaymentController.php:34
+* @see app/Http/Controllers/PaymentController.php:55
 * @route '/payments'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PaymentController::store
-* @see app/Http/Controllers/PaymentController.php:34
+* @see app/Http/Controllers/PaymentController.php:55
 * @route '/payments'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +116,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\PaymentController::store
-* @see app/Http/Controllers/PaymentController.php:34
+* @see app/Http/Controllers/PaymentController.php:55
 * @route '/payments'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +126,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \App\Http\Controllers\PaymentController::store
-* @see app/Http/Controllers/PaymentController.php:34
+* @see app/Http/Controllers/PaymentController.php:55
 * @route '/payments'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -138,7 +138,7 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 export const show = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -153,7 +153,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 show.url = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -186,7 +186,7 @@ show.url = (args: { payment: number | { id: number } } | [payment: number | { id
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 show.get = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -196,7 +196,7 @@ show.get = (args: { payment: number | { id: number } } | [payment: number | { id
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 show.head = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -206,7 +206,7 @@ show.head = (args: { payment: number | { id: number } } | [payment: number | { i
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 const showForm = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -216,7 +216,7 @@ const showForm = (args: { payment: number | { id: number } } | [payment: number 
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 showForm.get = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -226,7 +226,7 @@ showForm.get = (args: { payment: number | { id: number } } | [payment: number | 
 
 /**
 * @see \App\Http\Controllers\PaymentController::show
-* @see app/Http/Controllers/PaymentController.php:42
+* @see app/Http/Controllers/PaymentController.php:63
 * @route '/payments/{payment}'
 */
 showForm.head = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -243,7 +243,7 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\PaymentController::destroy
-* @see app/Http/Controllers/PaymentController.php:49
+* @see app/Http/Controllers/PaymentController.php:70
 * @route '/payments/{payment}'
 */
 export const destroy = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -258,7 +258,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\PaymentController::destroy
-* @see app/Http/Controllers/PaymentController.php:49
+* @see app/Http/Controllers/PaymentController.php:70
 * @route '/payments/{payment}'
 */
 destroy.url = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -291,7 +291,7 @@ destroy.url = (args: { payment: number | { id: number } } | [payment: number | {
 
 /**
 * @see \App\Http\Controllers\PaymentController::destroy
-* @see app/Http/Controllers/PaymentController.php:49
+* @see app/Http/Controllers/PaymentController.php:70
 * @route '/payments/{payment}'
 */
 destroy.delete = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -301,7 +301,7 @@ destroy.delete = (args: { payment: number | { id: number } } | [payment: number 
 
 /**
 * @see \App\Http\Controllers\PaymentController::destroy
-* @see app/Http/Controllers/PaymentController.php:49
+* @see app/Http/Controllers/PaymentController.php:70
 * @route '/payments/{payment}'
 */
 const destroyForm = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -316,7 +316,7 @@ const destroyForm = (args: { payment: number | { id: number } } | [payment: numb
 
 /**
 * @see \App\Http\Controllers\PaymentController::destroy
-* @see app/Http/Controllers/PaymentController.php:49
+* @see app/Http/Controllers/PaymentController.php:70
 * @route '/payments/{payment}'
 */
 destroyForm.delete = (args: { payment: number | { id: number } } | [payment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

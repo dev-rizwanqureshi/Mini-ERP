@@ -7,11 +7,13 @@ use App\DTOs\InvoiceItemData;
 use App\Enums\InvoiceStatus;
 use App\Events\InvoiceCreated;
 use App\Events\InvoiceStatusChanged;
+use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\User;
+use App\Support\TableQuery;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -22,13 +24,28 @@ class InvoiceService
 
     public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator
     {
-        return Invoice::query()
+        $query = Invoice::query()
             ->with(['customer', 'items.product', 'payments', 'user'])
-            ->when($filters['search'] ?? null, fn ($query, $term) => $query->where('invoice_number', 'like', "%{$term}%"))
+            ->when($filters['search'] ?? null, fn ($query, $term) => $query->where(function ($query) use ($term): void {
+                $query->where('invoice_number', 'like', "%{$term}%")
+                    ->orWhereHas('customer', fn ($query) => $query->where('name', 'like', "%{$term}%"));
+            }))
             ->byStatus($filters['status'] ?? null)
             ->when($filters['customer_id'] ?? null, fn ($query, $customerId) => $query->forCustomer((int) $customerId))
-            ->dateRange($filters['date_from'] ?? null, $filters['date_to'] ?? null)
-            ->latest()
+            ->dateRange($filters['date_from'] ?? null, $filters['date_to'] ?? null);
+
+        TableQuery::applySort($query, $filters, [
+            'invoice_number' => 'invoice_number',
+            'customer' => fn ($query, string $direction) => $query->orderBy(Customer::query()->select('name')->whereColumn('customers.id', 'invoices.customer_id'), $direction),
+            'invoice_date' => 'invoice_date',
+            'due_date' => 'due_date',
+            'status' => 'status',
+            'total' => 'total',
+            'balance_amount' => 'balance_amount',
+            'created_at' => 'created_at',
+        ], 'invoice_date', 'desc');
+
+        return $query
             ->paginate($perPage)
             ->withQueryString();
     }

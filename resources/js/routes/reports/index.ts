@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 export const sales = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ sales.definition = {
 
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 sales.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ sales.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 sales.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ sales.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 sales.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ sales.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 const salesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const salesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 salesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ salesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::sales
-* @see app/Http/Controllers/ReportController.php:12
+* @see app/Http/Controllers/ReportController.php:13
 * @route '/reports/sales'
 */
 salesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ sales.form = salesForm
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 export const customers = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ customers.definition = {
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 customers.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ customers.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 customers.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ customers.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 customers.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ customers.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 const customersForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const customersForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 customersForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ customersForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \App\Http\Controllers\ReportController::customers
-* @see app/Http/Controllers/ReportController.php:19
+* @see app/Http/Controllers/ReportController.php:23
 * @route '/reports/customers'
 */
 customersForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +163,7 @@ customers.form = customersForm
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 export const payments = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ payments.definition = {
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 payments.url = (options?: RouteQueryOptions) => {
@@ -187,7 +187,7 @@ payments.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 payments.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -197,7 +197,7 @@ payments.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 payments.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -207,7 +207,7 @@ payments.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 const paymentsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -217,7 +217,7 @@ const paymentsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 paymentsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -227,7 +227,7 @@ paymentsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\ReportController::payments
-* @see app/Http/Controllers/ReportController.php:24
+* @see app/Http/Controllers/ReportController.php:33
 * @route '/reports/payments'
 */
 paymentsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -244,7 +244,7 @@ payments.form = paymentsForm
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 export const outstanding = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -259,7 +259,7 @@ outstanding.definition = {
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 outstanding.url = (options?: RouteQueryOptions) => {
@@ -268,7 +268,7 @@ outstanding.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 outstanding.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -278,7 +278,7 @@ outstanding.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 outstanding.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -288,7 +288,7 @@ outstanding.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 const outstandingForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -298,7 +298,7 @@ const outstandingForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 outstandingForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -308,7 +308,7 @@ outstandingForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\ReportController::outstanding
-* @see app/Http/Controllers/ReportController.php:29
+* @see app/Http/Controllers/ReportController.php:43
 * @route '/reports/outstanding'
 */
 outstandingForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -325,7 +325,7 @@ outstanding.form = outstandingForm
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 export const exportMethod = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -340,7 +340,7 @@ exportMethod.definition = {
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 exportMethod.url = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -367,7 +367,7 @@ exportMethod.url = (args: { type: string | number } | [type: string | number ] |
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 exportMethod.get = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -377,7 +377,7 @@ exportMethod.get = (args: { type: string | number } | [type: string | number ] |
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 exportMethod.head = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -387,7 +387,7 @@ exportMethod.head = (args: { type: string | number } | [type: string | number ] 
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 const exportMethodForm = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -397,7 +397,7 @@ const exportMethodForm = (args: { type: string | number } | [type: string | numb
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 exportMethodForm.get = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -407,7 +407,7 @@ exportMethodForm.get = (args: { type: string | number } | [type: string | number
 
 /**
 * @see \App\Http\Controllers\ReportController::exportMethod
-* @see app/Http/Controllers/ReportController.php:34
+* @see app/Http/Controllers/ReportController.php:53
 * @route '/reports/export/{type}'
 */
 exportMethodForm.head = (args: { type: string | number } | [type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

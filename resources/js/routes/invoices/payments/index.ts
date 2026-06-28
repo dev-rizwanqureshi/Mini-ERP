@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 export const create = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 create.url = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -49,7 +49,7 @@ create.url = (args: { invoice: number | { id: number } } | [invoice: number | { 
 
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 create.get = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -59,7 +59,7 @@ create.get = (args: { invoice: number | { id: number } } | [invoice: number | { 
 
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 create.head = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -69,7 +69,7 @@ create.head = (args: { invoice: number | { id: number } } | [invoice: number | {
 
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 const createForm = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ const createForm = (args: { invoice: number | { id: number } } | [invoice: numbe
 
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 createForm.get = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -89,7 +89,7 @@ createForm.get = (args: { invoice: number | { id: number } } | [invoice: number 
 
 /**
 * @see \App\Http\Controllers\PaymentController::create
-* @see app/Http/Controllers/PaymentController.php:27
+* @see app/Http/Controllers/PaymentController.php:48
 * @route '/invoices/{invoice}/payments/create'
 */
 createForm.head = (args: { invoice: number | { id: number } } | [invoice: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

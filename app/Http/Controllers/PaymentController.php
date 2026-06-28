@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\DTOs\PaymentData;
 use App\Enums\PaymentMethod;
 use App\Http\Requests\Payment\StorePaymentRequest;
+use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Services\PaymentService;
+use App\Support\TableQuery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -19,8 +21,27 @@ class PaymentController extends Controller
     {
         $this->authorize('viewAny', Payment::class);
 
+        $query = Payment::query()
+            ->with(['invoice', 'customer', 'user'])
+            ->when($request->string('search')->toString(), fn ($query, string $term) => $query->where(function ($query) use ($term): void {
+                $query->where('reference_number', 'like', "%{$term}%")
+                    ->orWhere('payment_method', 'like', "%{$term}%")
+                    ->orWhereHas('invoice', fn ($query) => $query->where('invoice_number', 'like', "%{$term}%"))
+                    ->orWhereHas('customer', fn ($query) => $query->where('name', 'like', "%{$term}%"));
+            }));
+
+        TableQuery::applySort($query, $request, [
+            'payment_date' => 'payment_date',
+            'amount' => 'amount',
+            'payment_method' => 'payment_method',
+            'created_at' => 'created_at',
+            'customer' => fn ($query, string $direction) => $query->orderBy(Customer::query()->select('name')->whereColumn('customers.id', 'payments.customer_id'), $direction),
+            'invoice' => fn ($query, string $direction) => $query->orderBy(Invoice::query()->select('invoice_number')->whereColumn('invoices.id', 'payments.invoice_id'), $direction),
+        ], 'payment_date', 'desc');
+
         return Inertia::render('Payments/Index', [
-            'payments' => Payment::query()->with(['invoice', 'customer', 'user'])->latest()->paginate(15)->withQueryString(),
+            'payments' => $query->paginate(15)->withQueryString(),
+            'filters' => TableQuery::filters($request, ['search', 'sort', 'direction']),
         ]);
     }
 

@@ -6,6 +6,7 @@ use App\Enums\ProductStatus;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
+use App\Support\TableQuery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -17,9 +18,19 @@ class ProductController extends Controller
     {
         $this->authorize('viewAny', Product::class);
 
+        $query = Product::query()->search($request->string('search')->toString());
+
+        TableQuery::applySort($query, $request, [
+            'name' => 'name',
+            'sku' => 'sku',
+            'unit_price' => 'unit_price',
+            'stock_quantity' => 'stock_quantity',
+            'created_at' => 'created_at',
+        ]);
+
         return Inertia::render('Products/Index', [
-            'products' => Product::query()->search($request->string('search')->toString())->latest()->paginate(15)->withQueryString(),
-            'filters' => $request->only('search'),
+            'products' => $query->paginate(15)->withQueryString(),
+            'filters' => TableQuery::filters($request, ['search', 'sort', 'direction']),
         ]);
     }
 

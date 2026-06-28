@@ -7,6 +7,7 @@ use App\DTOs\InvoiceItemData;
 use App\DTOs\PaymentData;
 use App\Enums\PaymentMethod;
 use App\Models\Customer;
+use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\User;
 use App\Services\InvoiceService;
@@ -28,6 +29,10 @@ class DatabaseSeeder extends Seeder
         $user = User::query()->where('email', 'admin@erp.test')->firstOrFail();
         $invoiceService = app(InvoiceService::class);
         $paymentService = app(PaymentService::class);
+
+        if (Invoice::query()->exists()) {
+            return;
+        }
 
         for ($i = 0; $i < 20; $i++) {
             $customer = Customer::query()->inRandomOrder()->first();

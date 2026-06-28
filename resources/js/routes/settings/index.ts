@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\SettingController::index
-* @see app/Http/Controllers/SettingController.php:14
+* @see app/Http/Controllers/SettingController.php:16
 * @route '/erp-settings'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\SettingController::update
-* @see app/Http/Controllers/SettingController.php:19
+* @see app/Http/Controllers/SettingController.php:40
 * @route '/erp-settings'
 */
 export const update = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -97,7 +97,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\SettingController::update
-* @see app/Http/Controllers/SettingController.php:19
+* @see app/Http/Controllers/SettingController.php:40
 * @route '/erp-settings'
 */
 update.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ update.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\SettingController::update
-* @see app/Http/Controllers/SettingController.php:19
+* @see app/Http/Controllers/SettingController.php:40
 * @route '/erp-settings'
 */
 update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -116,7 +116,7 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 
 /**
 * @see \App\Http\Controllers\SettingController::update
-* @see app/Http/Controllers/SettingController.php:19
+* @see app/Http/Controllers/SettingController.php:40
 * @route '/erp-settings'
 */
 const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -131,7 +131,7 @@ const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =>
 
 /**
 * @see \App\Http\Controllers\SettingController::update
-* @see app/Http/Controllers/SettingController.php:19
+* @see app/Http/Controllers/SettingController.php:40
 * @route '/erp-settings'
 */
 updateForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

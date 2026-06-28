@@ -7,6 +7,7 @@ import PaymentController from './PaymentController'
 import ReportController from './ReportController'
 import SettingController from './SettingController'
 import UserController from './UserController'
+import RoleController from './RoleController'
 import Settings from './Settings'
 
 const Controllers = {
@@ -19,6 +20,7 @@ const Controllers = {
     ReportController: Object.assign(ReportController, ReportController),
     SettingController: Object.assign(SettingController, SettingController),
     UserController: Object.assign(UserController, UserController),
+    RoleController: Object.assign(RoleController, RoleController),
     Settings: Object.assign(Settings, Settings),
 }
 

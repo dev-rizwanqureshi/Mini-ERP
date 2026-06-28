@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserGender;
 use App\Enums\UserRole;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -26,7 +27,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password', 'role_id', 'is_active', 'avatar', 'phone', 'last_login_at'])]
+#[Fillable(['name', 'email', 'password', 'role_id', 'is_active', 'avatar', 'phone', 'gender', 'last_login_at'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
 class User extends Authenticatable implements PasskeyUser
 {
@@ -39,6 +40,7 @@ class User extends Authenticatable implements PasskeyUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
+            'gender' => UserGender::class,
             'last_login_at' => 'datetime',
             'two_factor_confirmed_at' => 'datetime',
         ];
@@ -73,19 +75,26 @@ class User extends Authenticatable implements PasskeyUser
 
     public function isAdmin(): bool
     {
-        return in_array($this->role?->name, [UserRole::SuperAdmin->value, UserRole::Admin->value], true);
+        return $this->isApproved() && in_array($this->role?->name, [UserRole::SuperAdmin->value, UserRole::Admin->value], true);
     }
 
     public function isSuperAdmin(): bool
     {
-        return $this->hasRole(UserRole::SuperAdmin);
+        return $this->isApproved() && $this->hasRole(UserRole::SuperAdmin);
     }
 
     public function canDo(string $ability): bool
     {
-        $role = UserRole::tryFrom((string) $this->role?->name);
+        if (! $this->isApproved()) {
+            return false;
+        }
 
-        return $role?->allows($ability) ?? false;
+        return $this->role?->allows($ability) ?? false;
+    }
+
+    public function isApproved(): bool
+    {
+        return (bool) $this->is_active && $this->role_id !== null;
     }
 
     public function getAvatarUrlAttribute(): string

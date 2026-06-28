@@ -7,6 +7,7 @@ use App\Enums\CustomerStatus;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Models\Customer;
+use App\Support\TableQuery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -18,9 +19,21 @@ class CustomerController extends Controller
     {
         $this->authorize('viewAny', Customer::class);
 
+        $query = Customer::query()
+            ->withCount('invoices')
+            ->search($request->string('search')->toString());
+
+        TableQuery::applySort($query, $request, [
+            'name' => 'name',
+            'email' => 'email',
+            'company_name' => 'company_name',
+            'invoices_count' => 'invoices_count',
+            'created_at' => 'created_at',
+        ]);
+
         return Inertia::render('Customers/Index', [
-            'customers' => Customer::query()->withCount('invoices')->search($request->string('search')->toString())->latest()->paginate(15)->withQueryString(),
-            'filters' => $request->only('search'),
+            'customers' => $query->paginate(15)->withQueryString(),
+            'filters' => TableQuery::filters($request, ['search', 'sort', 'direction']),
         ]);
     }
 

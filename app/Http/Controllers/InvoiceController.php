@@ -10,6 +10,7 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Product;
 use App\Services\InvoiceService;
+use App\Support\TableQuery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -24,8 +25,8 @@ class InvoiceController extends Controller
         $this->authorize('viewAny', Invoice::class);
 
         return Inertia::render('Invoices/Index', [
-            'invoices' => $this->invoiceService->paginate($request->only(['search', 'status', 'customer_id', 'date_from', 'date_to'])),
-            'filters' => $request->only(['search', 'status', 'customer_id', 'date_from', 'date_to']),
+            'invoices' => $this->invoiceService->paginate($request->only(['search', 'status', 'customer_id', 'date_from', 'date_to', 'sort', 'direction'])),
+            'filters' => TableQuery::filters($request, ['search', 'status', 'customer_id', 'date_from', 'date_to', 'sort', 'direction']),
             'statuses' => InvoiceStatus::cases(),
         ]);
     }
