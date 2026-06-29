@@ -48,14 +48,58 @@ class StoreInvoiceRequest extends FormRequest
                 if (($item['discount_type'] ?? '') === 'percentage' && (float) ($item['discount_value'] ?? 0) > 100) {
                     $validator->errors()->add("items.{$index}.discount_value", 'Percentage discount cannot exceed 100%.');
                 }
-
-                if (! empty($item['product_id'])) {
-                    $product = Product::query()->find($item['product_id']);
-                    if ($product && ($product->status !== ProductStatus::Active || $product->stock_quantity < (float) $item['quantity'])) {
-                        $validator->errors()->add("items.{$index}.quantity", "Insufficient active stock for {$product->name}.");
-                    }
-                }
             }
+
+            $this->validateStockAvailability($validator);
         });
+    }
+
+    protected function availableStockFor(Product $product): float
+    {
+        return (float) $product->stock_quantity;
+    }
+
+    private function validateStockAvailability($validator): void
+    {
+        $products = [];
+        $requested = [];
+        $indexes = [];
+
+        foreach ($this->items ?? [] as $index => $item) {
+            if (empty($item['product_id'])) {
+                continue;
+            }
+
+            $productId = (int) $item['product_id'];
+            $product = $products[$productId] ??= Product::query()->find($productId);
+
+            if (! $product) {
+                continue;
+            }
+
+            if ($product->status !== ProductStatus::Active) {
+                $validator->errors()->add("items.{$index}.product_id", "{$product->name} is not active.");
+                continue;
+            }
+
+            $requested[$productId] = ($requested[$productId] ?? 0) + (float) ($item['quantity'] ?? 0);
+            $indexes[$productId][] = $index;
+        }
+
+        foreach ($requested as $productId => $quantity) {
+            $product = $products[$productId];
+            $available = $this->availableStockFor($product);
+
+            if ($quantity <= $available) {
+                continue;
+            }
+
+            foreach ($indexes[$productId] as $index) {
+                $validator->errors()->add(
+                    "items.{$index}.quantity",
+                    "Insufficient active stock for {$product->name}. Available: {$available}. Requested: {$quantity}."
+                );
+            }
+        }
     }
 }

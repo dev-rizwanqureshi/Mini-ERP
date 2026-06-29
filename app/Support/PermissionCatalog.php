@@ -14,8 +14,11 @@ class PermissionCatalog
             ],
             'products' => [
                 'label' => 'Products',
-                'description' => 'Product catalog, pricing, stock quantities, and product CRUD.',
-                'abilities' => self::crudAbilities(),
+                'description' => 'Product catalog, pricing, stock quantities, stock adjustments, and product CRUD.',
+                'abilities' => [
+                    ...self::crudAbilities(),
+                    'adjustStock' => 'Adjust stock',
+                ],
             ],
             'invoices' => [
                 'label' => 'Invoices',

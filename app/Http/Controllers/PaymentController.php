@@ -72,6 +72,6 @@ class PaymentController extends Controller
         $this->authorize('delete', $payment);
         $paymentService->delete($payment);
 
-        return back()->with('success', 'Payment deleted successfully.');
+        return redirect()->route('payments.index')->with('success', 'Payment deleted successfully.');
     }
 }

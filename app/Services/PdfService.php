@@ -23,7 +23,7 @@ class PdfService
         $invoice->loadMissing(['customer', 'items.product', 'payments']);
 
         return Pdf::loadView($this->getInvoiceView($invoice), ['invoice' => $invoice])
-            ->download("{$invoice->invoice_number}.pdf");
+            ->stream("{$invoice->invoice_number}.pdf", ['Attachment' => false]);
     }
 
     public function getInvoiceView(Invoice $invoice): string

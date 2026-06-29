@@ -2,6 +2,7 @@
 import { useForm } from "@inertiajs/vue3";
 import BaseButton from "@/components/Base/BaseButton.vue";
 import BaseInput from "@/components/Base/BaseInput.vue";
+import CancelLink from "@/components/ui/CancelLink.vue";
 import SearchFilter from "@/components/ui/SearchFilter.vue";
 import SortLink from "@/components/ui/SortLink.vue";
 const props = defineProps<{ settings: any[]; filters: Record<string, unknown> & { search?: string } }>();
@@ -36,7 +37,11 @@ const form = useForm({ settings: Object.fromEntries(props.settings.map((setting)
           </tbody>
         </table>
       </div>
-      <BaseButton type="submit" :loading="form.processing">Save Settings</BaseButton>
+      <div class="flex flex-wrap justify-end gap-2">
+        <CancelLink href="/dashboard" :dirty="form.isDirty" />
+        <button type="button" class="h-10 rounded-md border px-4 text-sm font-medium hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" @click="form.reset()">Reset Changes</button>
+        <BaseButton type="submit" :loading="form.processing">Save Settings</BaseButton>
+      </div>
     </form>
   </div>
 </template>

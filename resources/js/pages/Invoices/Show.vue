@@ -1,7 +1,32 @@
 <script setup lang="ts">
 import { Link, router } from "@inertiajs/vue3";
+import { ref } from "vue";
+import ConfirmModal from "@/components/ui/ConfirmModal.vue";
 import StatusBadge from "@/components/ui/StatusBadge.vue";
 defineProps<{ invoice: any }>();
+
+const confirmingDelete = ref(false);
+const confirmingCancel = ref(false);
+const sending = ref(false);
+
+function sendInvoice(invoice: any) {
+  sending.value = true;
+  router.post(`/invoices/${invoice.id}/send`, {}, {
+    onFinish: () => sending.value = false,
+  });
+}
+
+function cancelInvoice(invoice: any) {
+  router.post(`/invoices/${invoice.id}/cancel`, {}, {
+    onFinish: () => confirmingCancel.value = false,
+  });
+}
+
+function deleteInvoice(invoice: any) {
+  router.delete(`/invoices/${invoice.id}`, {
+    onFinish: () => confirmingDelete.value = false,
+  });
+}
 </script>
 
 <template>
@@ -11,10 +36,14 @@ defineProps<{ invoice: any }>();
         <h1 class="text-2xl font-semibold">{{ invoice.invoice_number }}</h1>
         <p class="text-sm text-neutral-500">{{ invoice.customer.name }}</p>
       </div>
-      <div class="flex gap-2">
-        <Link :href="`/invoices/${invoice.id}/pdf`" class="rounded-md border px-4 py-2 text-sm">PDF</Link>
+      <div class="flex flex-wrap gap-2">
+        <Link href="/invoices" class="rounded-md border px-4 py-2 text-sm">Back</Link>
+        <a :href="`/invoices/${invoice.id}/pdf`" target="_blank" rel="noopener" class="rounded-md border px-4 py-2 text-sm">PDF</a>
+        <Link :href="`/invoices/${invoice.id}/edit`" class="rounded-md border px-4 py-2 text-sm">Edit</Link>
         <Link :href="`/invoices/${invoice.id}/payments/create`" class="rounded-md bg-teal-700 px-4 py-2 text-sm text-white">Payment</Link>
-        <button class="rounded-md border px-4 py-2 text-sm" @click="router.post(`/invoices/${invoice.id}/send`)">Send</button>
+        <button type="button" class="rounded-md border px-4 py-2 text-sm disabled:opacity-60" :disabled="sending" @click="sendInvoice(invoice)">Send</button>
+        <button type="button" class="rounded-md border px-4 py-2 text-sm text-amber-700" @click="confirmingCancel = true">Cancel Invoice</button>
+        <button type="button" class="rounded-md bg-red-600 px-4 py-2 text-sm text-white" @click="confirmingDelete = true">Delete</button>
       </div>
     </div>
     <StatusBadge :status="invoice.status" />
@@ -30,4 +59,23 @@ defineProps<{ invoice: any }>();
       <div class="flex justify-between"><span>Balance</span><strong>${{ invoice.balance_amount }}</strong></div>
     </div>
   </div>
+
+  <ConfirmModal
+    :open="confirmingCancel"
+    title="Cancel invoice?"
+    :message="`This will cancel invoice ${invoice.invoice_number} and restore stock where applicable.`"
+    confirm-label="Cancel Invoice"
+    variant="primary"
+    @close="confirmingCancel = false"
+    @confirm="cancelInvoice(invoice)"
+  />
+
+  <ConfirmModal
+    :open="confirmingDelete"
+    title="Delete invoice?"
+    :message="`This will permanently remove invoice ${invoice.invoice_number}.`"
+    confirm-label="Delete Invoice"
+    @close="confirmingDelete = false"
+    @confirm="deleteInvoice(invoice)"
+  />
 </template>

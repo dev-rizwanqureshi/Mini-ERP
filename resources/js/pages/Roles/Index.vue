@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { Link, router } from "@inertiajs/vue3";
 import { Plus, ShieldCheck, Trash2 } from "@lucide/vue";
+import { ref } from "vue";
+import ConfirmModal from "@/components/ui/ConfirmModal.vue";
 import SearchFilter from "@/components/ui/SearchFilter.vue";
 import SortLink from "@/components/ui/SortLink.vue";
 
 defineProps<{ roles: any[]; permissionModules: Record<string, any>; filters: Record<string, unknown> & { search?: string } }>();
+const rolePendingDelete = ref<any | null>(null);
 
-function deleteRole(role: any) {
-  if (!confirm(`Delete ${role.display_name}?`)) return;
+function deleteRole() {
+  if (!rolePendingDelete.value) return;
 
-  router.delete(`/roles/${role.id}`);
+  router.delete(`/roles/${rolePendingDelete.value.id}`, {
+    onFinish: () => rolePendingDelete.value = null,
+  });
 }
 </script>
 
@@ -66,7 +71,7 @@ function deleteRole(role: any) {
               class="inline-flex size-8 items-center justify-center rounded-md border text-red-600 hover:bg-red-50"
               :aria-label="`Delete ${role.display_name}`"
               :title="`Delete ${role.display_name}`"
-              @click="deleteRole(role)"
+              @click="rolePendingDelete = role"
             >
               <Trash2 class="size-4" />
             </button>
@@ -76,4 +81,13 @@ function deleteRole(role: any) {
       </section>
     </div>
   </div>
+
+  <ConfirmModal
+    :open="Boolean(rolePendingDelete)"
+    title="Delete role?"
+    :message="rolePendingDelete ? `This will permanently remove ${rolePendingDelete.display_name}.` : ''"
+    confirm-label="Delete Role"
+    @close="rolePendingDelete = null"
+    @confirm="deleteRole"
+  />
 </template>

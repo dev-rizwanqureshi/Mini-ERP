@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,8 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::middleware('approved')->group(function (): void {
         Route::resource('customers', CustomerController::class);
         Route::resource('products', ProductController::class);
+        Route::post('products/{product}/stock-adjustments', [ProductController::class, 'adjustStock'])->name('products.stock-adjustments.store');
+        Route::get('stock', [StockController::class, 'index'])->name('stock.index');
 
         Route::resource('invoices', InvoiceController::class);
         Route::post('invoices/{invoice}/send', [InvoiceController::class, 'send'])->name('invoices.send');

@@ -79,6 +79,6 @@ class CustomerController extends Controller
         $this->authorize('delete', $customer);
         $customer->delete();
 
-        return back()->with('success', 'Customer deleted successfully.');
+        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
     }
 }

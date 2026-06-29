@@ -34,7 +34,7 @@ class Product extends Model
 
     public function stockMovements(): HasMany
     {
-        return $this->hasMany(StockMovement::class);
+        return $this->hasMany(StockMovement::class)->latest();
     }
 
     public function scopeActive(Builder $query): Builder

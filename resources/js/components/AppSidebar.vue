@@ -8,6 +8,7 @@ import {
   LayoutGrid,
   Settings,
   ShieldCheck,
+  Warehouse,
   Users,
   UserCog,
 } from "@lucide/vue";
@@ -56,6 +57,11 @@ const mainNavItems = computed<NavItem[]>(() => [
           title: "Products",
           href: "/products",
           icon: Boxes,
+        }] : []),
+        ...(can("products.viewAny") || can("products.view") ? [{
+          title: "Stock",
+          href: "/stock",
+          icon: Warehouse,
         }] : []),
         ...(can("invoices.viewAny") ? [{
           title: "Invoices",

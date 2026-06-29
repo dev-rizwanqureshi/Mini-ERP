@@ -1,6 +1,7 @@
 import DashboardController from './DashboardController'
 import CustomerController from './CustomerController'
 import ProductController from './ProductController'
+import StockController from './StockController'
 import InvoiceController from './InvoiceController'
 import InvoicePdfController from './InvoicePdfController'
 import PaymentController from './PaymentController'
@@ -14,6 +15,7 @@ const Controllers = {
     DashboardController: Object.assign(DashboardController, DashboardController),
     CustomerController: Object.assign(CustomerController, CustomerController),
     ProductController: Object.assign(ProductController, ProductController),
+    StockController: Object.assign(StockController, StockController),
     InvoiceController: Object.assign(InvoiceController, InvoiceController),
     InvoicePdfController: Object.assign(InvoicePdfController, InvoicePdfController),
     PaymentController: Object.assign(PaymentController, PaymentController),

@@ -4,5 +4,5 @@ defineProps<{ invoice: any; customers: any[]; products: any[] }>();
 </script>
 
 <template>
-  <CreateInvoice :customers="customers" :products="products" />
+  <CreateInvoice :invoice="invoice" :customers="customers" :products="products" />
 </template>
